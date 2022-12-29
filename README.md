@@ -1,3 +1,7 @@
+# Styling
+
+For this project we will not be using scoped styles and only use 1 css file (index.css) styles in here will be global
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
