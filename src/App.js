@@ -7,7 +7,7 @@ function App() {
   // const title = 'Welcome to my new blog'
   // const person = {name: 'yoshi', age: 50}
 
-
+  // state refers to a data at this point in time (array, obj, boolean etc)
   return (
     <div className="App">
       <Navbar></Navbar>
