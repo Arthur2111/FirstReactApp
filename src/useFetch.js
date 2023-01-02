@@ -10,8 +10,11 @@ const useFetch = (url) => {
   // we can call useEffect to do some fetch functions to get Data
   // this reminds me of a mounted hook with a watcher in vue if we apply an array
   useEffect(() => {
+    const abortCont= new AbortController()
+
+
     setTimeout(() => {
-      fetch(url)
+      fetch(url, {signal: abortCont.signal})
         .then((res) => {
           if (!res.ok) {
             throw Error("could not fetch data");
@@ -20,16 +23,23 @@ const useFetch = (url) => {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
           setData(data);
           setIsPending(false);
           setError(null);
         })
         .catch((err) => {
-          setError(err.message);
-          setIsPending(false);
+          if(err.name == 'AbortError'){
+            console.log('fetch aborted')
+          } else{
+            setError(err.message);
+            setIsPending(false);
+          }
         });
     }, 1000);
+
+    // we return a function to do an abort control so that fetch wont run when page changes
+    // we .abort() to abort fetch associated with abortCont.signal
+    return () => abortCont.abort()
 
     // we use an empty dependency array only runs the function after first initial render
     // we can specify when this function is called when a specific value/data changes

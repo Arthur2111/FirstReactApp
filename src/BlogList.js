@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const BlogList = ({blogs,title}) => {
   return (
     <div className="blog-list">
@@ -5,9 +7,11 @@ const BlogList = ({blogs,title}) => {
       {blogs.map((blog) => (
         // we need a key property similar to using v-for in vue
         <div className="blog-preview" key={blog.id}>
+          <Link to={`/blogs/${blog.id}`}>
           <h2>{blog.title}</h2>
           <p>Written by {blog.author}</p>
-          <button>Delete Blog</button>
+          </Link>
+          {/* <button>Delete Blog</button> */}
         </div>
       ))}
     </div>

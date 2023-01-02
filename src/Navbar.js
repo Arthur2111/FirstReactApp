@@ -1,10 +1,13 @@
+import {Link} from 'react-router-dom'
+
 const Navbar = () => {
     return ( 
         <nav className="navbar">
             <h1>My Own Blog</h1>
             <div className="links">
-                <a href="/"> Home</a>
-                <a href="/create">New Blog</a>
+                {/* similar to vue we have to use to= but we use Link as instead of router link */}
+                <Link to="/"> Home</Link>
+                <Link to="/create">New Blog</Link>
             </div>
         </nav>
      );

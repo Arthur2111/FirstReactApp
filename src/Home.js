@@ -1,18 +1,13 @@
-import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 
 const Home = () => {
-  useEffect(() => {
-    console.log(blogs, isPending, error);
-  }, []);
+  // useEffect(() => {
+  //   console.log(blogs, isPending, error);
+  // }, []);
 
   // we can rename the returned value so that we can be more detailed while being reusable
-  const {
-    data: blogs,
-    isPending,
-    error,
-  } = useFetch("http://localhost:8000/blogs");
+  const {data: blogs, isPending, error,} = useFetch("http://localhost:8000/blogs");
 
   return (
     <div className="home">
